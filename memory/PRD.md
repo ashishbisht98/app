@@ -24,19 +24,26 @@ Build a landing page for an online live mobile app development course (Android +
 
 ## What's Implemented (Dec 2025)
 - Sticky header with brand mark + nav anchors + Enroll CTA
-- Hero (left-aligned massive type, terminal panel right, abstract bg, 4-stat bento)
+- Hero (warm Fraunces serif headline, soft "notebook" code panel right, 4-stat bento)
 - Marquee tech-stack ribbon
-- Curriculum bento (6 modules, JetBrains Mono numbering, lucide icons)
+- Curriculum bento (6 modules)
 - TechStack table + Requirements panel (with image)
 - Schedule comparison (Weekday vs Weekend, click-to-pre-select)
 - Pricing (Regular / Student plans, click-to-pre-select)
-- Testimonials grid (6 placeholder reviews with grayscale avatars)
+- Testimonials grid (6 placeholder reviews)
 - FAQ accordion (8 items)
 - Final CTA section
 - Footer with contact info
 - Floating WhatsApp button
 - Enrollment dialog (Name/Email/Phone/Schedule/Plan/Message → Razorpay)
 - Test-mode short-circuit: when keys are placeholder, lead saved without checkout
+
+## Theme (warm/gentle iteration — Dec 2025)
+- Cream `#FBF7F1` background, ink `#2A1F18` text
+- Terracotta `#D86A35` primary accent, sage `#3F7A6B` secondary
+- Fraunces serif headings, IBM Plex Sans body, JetBrains Mono labels
+- Rounded `md` corners on buttons / cards / inputs
+- Soft warm hairline borders
 
 ## Backlog (P0/P1/P2)
 - **P0 (User to provide)**: Real Razorpay live keys, real WhatsApp number, real domain
