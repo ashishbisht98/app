@@ -65,9 +65,11 @@ export default function FAQ() {
                   key={i}
                   value={`item-${i}`}
                   className="border-b border-grid"
-                  data-testid={`faq-${i}`}
                 >
-                  <AccordionTrigger className="text-left text-white font-display text-lg sm:text-xl hover:no-underline py-6">
+                  <AccordionTrigger
+                    data-testid={`faq-${i}`}
+                    className="text-left text-white font-display text-lg sm:text-xl hover:no-underline py-6"
+                  >
                     <span className="flex items-start gap-4">
                       <span className="font-mono text-xs text-zinc-500 mt-1.5">
                         {String(i + 1).padStart(2, "0")}
