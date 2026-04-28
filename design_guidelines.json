@@ -1,0 +1,114 @@
+{
+  "theme_and_archetype": {
+    "domain": "Developer Course / Tech Education",
+    "theme": "Dark",
+    "archetype": "4 (Swiss & High-Contrast) - Developer Terminal Brutalism Variant",
+    "mood": "Authoritative, cutting-edge, realistic, high-tension, no-fluff."
+  },
+  "typography": {
+    "fonts": {
+      "headings": "Clash Display",
+      "body": "IBM Plex Sans",
+      "mono": "JetBrains Mono"
+    },
+    "rules": {
+      "h1": "text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tighter leading-none",
+      "h2": "text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight",
+      "h3": "text-xl sm:text-2xl font-medium",
+      "body": "text-base sm:text-lg leading-relaxed",
+      "overline_labels": "font-mono text-xs uppercase tracking-[0.2em]"
+    },
+    "install_instructions": "Load Clash Display, IBM Plex Sans, and JetBrains Mono from Google Fonts or Fontshare."
+  },
+  "colors": {
+    "background": {
+      "void": "#050505",
+      "surface": "#0C0C0C",
+      "elevated": "#141414"
+    },
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "#A1A1AA",
+      "muted": "#71717A"
+    },
+    "brand_accents": {
+      "primary": "#FF4400",
+      "primary_hover": "#FF6A33",
+      "electric_blue": "#0055FF",
+      "success_whatsapp": "#25D366"
+    },
+    "borders": {
+      "grid": "#1A1A1A",
+      "active": "#333333"
+    }
+  },
+  "spacing_and_layout": {
+    "philosophy": "Grid Borders ('The Technical Look'). Expose the skeleton, use visible 1px borders to separate content zones instead of relying only on whitespace.",
+    "container_padding": "p-8 md:p-12 lg:p-16",
+    "grid_system": "Bento grids with gap-0 (using border-collapse techniques or border-r/border-b on items) to feel like a dashboard/IDE.",
+    "radius": "rounded-none or max rounded-sm (2px to 4px) - completely sharp, anti-soft UI."
+  },
+  "components": {
+    "header": {
+      "style": "Solid background #050505, 1px bottom border #1A1A1A. z-50 sticky. No glassmorphism.",
+      "logo": "Text 'Orchitek' in Clash Display, bold, white, with a Signal Orange dot."
+    },
+    "hero": {
+      "layout": "Left-aligned content, massive text, tight tracking. Right side features an abstract tech visual or a code snippet graphic.",
+      "background": "Use abstract network image heavily darkened, or keep pure #050505 with a subtle grain texture."
+    },
+    "features_curriculum": {
+      "layout": "Dense 'Control Room' grid. Topics listed with JetBrains Mono numbers (01, 02, etc.). Accordion for detailed syllabus."
+    },
+    "cards_and_pricing": {
+      "style": "Flat background (#0C0C0C), 1px subtle border (#1A1A1A). Hover state: border color darkens to #333333, button turns Signal Orange.",
+      "pricing_accent": "Highlight 'Student Discount' with a JetBrains Mono overline and a sharp Electric Blue or Orange badge."
+    },
+    "buttons": {
+      "primary": "Sharp corners (rounded-none), bg-[#FF4400], text-white, hover:bg-[#FF6A33] transition-colors, font-medium, px-6 py-3.",
+      "secondary": "border border-[#333333] bg-transparent text-white hover:bg-[#1A1A1A] px-6 py-3."
+    },
+    "whatsapp_float": {
+      "style": "fixed bottom-6 right-6 bg-[#25D366] text-black p-4 rounded-none shadow-[4px_4px_0_0_#ffffff] hover:translate-y-1 hover:shadow-[2px_2px_0_0_#ffffff] transition-all z-50 flex items-center gap-2 font-mono text-sm uppercase font-bold"
+    }
+  },
+  "motion_and_interactions": {
+    "hover_states": "Crisp and instant. No sluggish fades. Transform translate-y-[-2px] with a sharp shadow for cards.",
+    "reveal": "Staggered fade-up for list items (Curriculum) using Framer Motion.",
+    "marquee": "Use a slow-moving 'Editorial Ribbon' of tech stack names (Android Studio, Kotlin, Firebase, Google Cloud) separated by a colored slash or dot, low contrast (#333 on #050505 bg) to add texture."
+  },
+  "media_and_image_urls": {
+    "hero_background": {
+      "url": "https://images.pexels.com/photos/18545023/pexels-photo-18545023.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Abstract red/orange neon data network. Use behind the hero section with a bg-black/80 overlay."
+    },
+    "tech_coding": {
+      "url": "https://images.pexels.com/photos/33607948/pexels-photo-33607948.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Close up of mobile app code. Use for 'What you'll build / Features' section."
+    },
+    "instructor_or_programmer": {
+      "url": "https://images.pexels.com/photos/16018144/pexels-photo-16018144.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Silhouette of a programmer coding. Use alongside the 'Industry-level coding & architecture' content block."
+    },
+    "testimonials": [
+      {
+        "url": "https://images.pexels.com/photos/9568826/pexels-photo-9568826.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Student avatar 1"
+      },
+      {
+        "url": "https://images.pexels.com/photos/18699972/pexels-photo-18699972.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Student avatar 2"
+      }
+    ]
+  },
+  "instructions_to_main_agent": [
+    "CRITICAL: Do NOT use Inter, Roboto, or generic fonts for headings. Use Clash Display. Fallback to a geometric sans if needed, but not Inter.",
+    "CRITICAL: Do NOT use purple (#9D4CDD) or teal (#1B93A4). Stick strictly to the Void Black, White, and Signal Orange palette.",
+    "Layout Musts: Implement the bento box grid style for 'Features' and 'Particulars' sections, utilizing 1px visible borders (border-[#1A1A1A]).",
+    "Accessibility: Ensure text over the abstract hero image has sufficient contrast (use text-shadow or heavy overlay bg-black/80).",
+    "Component Rules: Custom HTML/Tailwind for structural layout (marketing page rules), use Shadcn UI customized without the 'Vercel look' (remove soft shadows, use sharp corners) for the Enrollment form.",
+    "Forms: Include an enrollment form with inputs for Name, Email, Phone, and a Select for Schedule (Weekday/Weekend), ending with a 'Pay with Razorpay' submit button.",
+    "Icons: Use @phosphor-icons/react or lucide-react. Keep stroke width sharp (1.5 or 2).",
+    "Testing: Add data-testid attributes to all interactive elements (buttons, forms, links) using kebab-case role-based names."
+  ]
+}
