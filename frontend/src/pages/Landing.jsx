@@ -16,7 +16,7 @@ import EnrollmentDialog, { EnrollmentProvider } from "../components/landing/Enro
 export default function Landing() {
   return (
     <EnrollmentProvider>
-      <div className="bg-void text-white min-h-screen font-sans">
+      <div className="bg-void text-ink min-h-screen font-sans">
         <Header />
         <main>
           <Hero />

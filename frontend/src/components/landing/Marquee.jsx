@@ -20,7 +20,7 @@ export default function Marquee() {
         {list.map((t, i) => (
           <span
             key={i}
-            className="font-mono text-xs uppercase tracking-[0.25em] text-zinc-600 mx-8 flex items-center gap-8"
+            className="font-mono text-xs uppercase tracking-[0.18em] text-warm-400 mx-8 flex items-center gap-8"
           >
             {t}
             <span className="text-signal">/</span>

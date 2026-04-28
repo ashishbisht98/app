@@ -51,13 +51,13 @@ export default function Testimonials() {
     <section id="reviews" className="border-b border-grid" data-testid="testimonials-section">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 lg:px-14 py-20 md:py-28">
         <div className="max-w-3xl mb-14">
-          <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-signal mb-4">
+          <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-signal mb-4">
             / Reviews
           </div>
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.02] text-white">
+          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.02] text-ink">
             Builders who shipped, talking shop.
           </h2>
-          <p className="mt-6 text-lg text-zinc-400 leading-relaxed">
+          <p className="mt-6 text-lg text-warm-600 leading-relaxed">
             Real outcomes from past batches — students, working engineers and indie
             founders who used Orchitek to ship production apps.
           </p>
@@ -75,7 +75,7 @@ export default function Testimonials() {
                   <Star key={k} size={14} className="text-signal fill-signal" />
                 ))}
               </div>
-              <blockquote className="font-display text-lg text-white leading-snug mb-8 flex-1">
+              <blockquote className="font-display text-lg text-ink leading-snug mb-8 flex-1">
                 "{t.quote}"
               </blockquote>
               <figcaption className="flex items-center gap-3 pt-5 border-t border-grid">
@@ -86,8 +86,8 @@ export default function Testimonials() {
                   className="w-10 h-10 object-cover grayscale"
                 />
                 <div>
-                  <div className="text-white text-sm font-medium">{t.name}</div>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                  <div className="text-ink text-sm font-medium">{t.name}</div>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-warm-500">
                     {t.role}
                   </div>
                 </div>

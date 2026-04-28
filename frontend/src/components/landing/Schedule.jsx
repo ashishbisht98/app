@@ -35,15 +35,15 @@ export default function Schedule() {
     >
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 lg:px-14 py-20 md:py-28">
         <div className="max-w-3xl mb-14">
-          <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-signal mb-4">
+          <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-signal mb-4">
             / Schedule
           </div>
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.02] text-white">
+          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.02] text-ink">
             Pick the rhythm that fits your life.
           </h2>
-          <p className="mt-6 text-lg text-zinc-400 leading-relaxed">
-            New batches start the <span className="text-white">1st of every month</span>.
-            Course duration: <span className="text-white">1 month</span>. Choose between
+          <p className="mt-6 text-lg text-warm-600 leading-relaxed">
+            New batches start the <span className="text-ink">1st of every month</span>.
+            Course duration: <span className="text-ink">1 month</span>. Choose between
             two flexible class formats.
           </p>
         </div>
@@ -57,41 +57,41 @@ export default function Schedule() {
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-3">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-warm-500 mb-3">
                     Option {o.key === "weekday" ? "A" : "B"}
                   </div>
-                  <h3 className="font-display text-3xl sm:text-4xl text-white">
+                  <h3 className="font-display text-3xl sm:text-4xl text-ink">
                     {o.label}
                   </h3>
                 </div>
-                <Calendar size={24} className="text-zinc-600 group-hover:text-signal transition-colors" strokeWidth={1.5} />
+                <Calendar size={24} className="text-warm-400 group-hover:text-signal transition-colors" strokeWidth={1.5} />
               </div>
 
               <div className="mt-8 flex items-center gap-6 pt-6 border-t border-grid">
                 <div>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500 mb-2">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-warm-500 mb-2">
                     Days
                   </div>
-                  <div className="text-white text-lg">{o.schedule}</div>
+                  <div className="text-ink text-lg">{o.schedule}</div>
                 </div>
                 <div className="h-10 w-px bg-grid" />
                 <div>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500 mb-2">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-warm-500 mb-2">
                     Length
                   </div>
-                  <div className="text-white text-lg flex items-center gap-2">
+                  <div className="text-ink text-lg flex items-center gap-2">
                     <Clock size={14} className="text-signal" /> {o.duration}
                   </div>
                 </div>
               </div>
 
-              <p className="mt-6 text-zinc-400 text-sm leading-relaxed">
+              <p className="mt-6 text-warm-600 text-sm leading-relaxed">
                 {o.detail}
               </p>
 
               <button
                 onClick={() => choose(o.key)}
-                className="mt-8 inline-flex items-center gap-2 border border-gridhi hover:border-signal hover:text-signal text-white font-medium px-6 py-3 transition-colors"
+                className="mt-8 inline-flex items-center gap-2 border border-gridhi hover:border-signal hover:text-signal text-ink rounded-md font-medium px-6 py-3 transition-colors"
                 data-testid={`schedule-choose-${o.key}`}
               >
                 Choose {o.label} →

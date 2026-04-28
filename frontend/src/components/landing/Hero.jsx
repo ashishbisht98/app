@@ -15,34 +15,33 @@ export default function Hero() {
       className="relative overflow-hidden border-b border-grid"
       data-testid="hero-section"
     >
-      <div
-        className="absolute inset-0 opacity-30"
+      <div className="absolute inset-0 opacity-[0.08]"
         style={{
           backgroundImage: `url('${HERO_IMG}')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-void via-void/85 to-void/40" />
-      <div className="absolute inset-0 bg-techgrid opacity-40" />
+      <div className="absolute inset-0 bg-gradient-to-r from-void via-void/85 to-void/60" />
+      <div className="absolute inset-0 bg-techgrid opacity-60" />
 
       <div className="relative mx-auto max-w-[1400px] px-6 md:px-10 lg:px-14 py-20 md:py-28 lg:py-36">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
           <div className="lg:col-span-8">
-            <div className="inline-flex items-center gap-2 border border-grid px-3 py-1.5 mb-8 bg-void/60">
-              <span className="block w-2 h-2 bg-signal animate-pulse" />
-              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-400">
+            <div className="inline-flex items-center gap-2 border border-grid px-3 py-1.5 mb-8 bg-void-surface/60 rounded-md">
+              <span className="block w-2 h-2 bg-signal rounded-full animate-pulse" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-warm-600">
                 New batch starts on the 1st of every month
               </span>
             </div>
 
-            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-semibold tracking-tighter leading-[0.95] text-white">
+            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl xl:text-[88px] font-medium tracking-tight leading-[1.02] text-ink">
               Build real <span className="text-signal">Android &amp; iOS</span> apps.
               <br />
               From zero to <span className="underline decoration-signal decoration-[3px] underline-offset-[6px]">Play Store</span>.
             </h1>
 
-            <p className="mt-8 max-w-2xl text-base sm:text-lg text-zinc-400 leading-relaxed">
+            <p className="mt-8 max-w-2xl text-base sm:text-lg text-warm-600 leading-relaxed">
               A 1-month online live program that teaches you the full mobile workflow —
               frontend, backend, auth, security, APIs, architecture and AI-assisted
               development. No prior coding required.
@@ -51,7 +50,7 @@ export default function Hero() {
             <div className="mt-10 flex flex-wrap gap-4">
               <button
                 onClick={openDialog}
-                className="inline-flex items-center gap-2 bg-signal hover:bg-signal-hover text-white font-medium px-7 py-4 transition-colors"
+                className="inline-flex items-center gap-2 bg-signal hover:bg-signal-hover text-white rounded-md font-medium px-7 py-4 transition-colors shadow-sm"
                 data-testid="hero-enroll-btn"
               >
                 Enroll Now <ArrowRight size={18} />
@@ -60,7 +59,7 @@ export default function Hero() {
                 href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20Orchitek%2C%20I%27m%20interested%20in%20the%20Mobile%20App%20Course.`}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 border border-gridhi hover:border-white text-white font-medium px-7 py-4 transition-colors"
+                className="inline-flex items-center gap-2 border border-gridhi hover:border-ink hover:bg-void-surface text-ink rounded-md font-medium px-7 py-4 transition-colors"
                 data-testid="hero-whatsapp-btn"
               >
                 <MessageCircle size={18} /> Chat on WhatsApp
@@ -79,10 +78,10 @@ export default function Hero() {
                   className="border-r border-b border-grid p-5"
                   data-testid={`hero-stat-${s.k}`}
                 >
-                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-warm-500">
                     {s.k} / {s.l}
                   </div>
-                  <div className="mt-2 font-display text-xl sm:text-2xl text-white">
+                  <div className="mt-2 font-display text-xl sm:text-2xl text-ink">
                     {s.v}
                   </div>
                 </div>
@@ -91,18 +90,18 @@ export default function Hero() {
           </div>
 
           <div className="hidden lg:block lg:col-span-4">
-            <div className="relative border border-grid bg-void/60 p-6">
+            <div className="relative border border-grid bg-void-surface p-6 rounded-md shadow-sm">
               <div className="flex items-center justify-between mb-5">
                 <div className="flex gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-warm-300" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-warm-300" />
                   <span className="w-2.5 h-2.5 rounded-full bg-signal" />
                 </div>
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-warm-500">
                   ~/orchitek
                 </span>
               </div>
-              <pre className="font-mono text-xs leading-relaxed text-zinc-300 whitespace-pre-wrap">
+              <pre className="font-mono text-xs leading-relaxed text-warm-800 whitespace-pre-wrap">
 {`> kotlin --multiplatform init
 ✓ android target ready
 ✓ ios target ready
@@ -117,7 +116,7 @@ export default function Hero() {
               <div className="mt-6 flex items-center gap-3 pt-4 border-t border-grid">
                 <Smartphone size={16} className="text-signal" />
                 <Cpu size={16} className="text-electric" />
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-warm-500">
                   Production-grade workflow
                 </span>
               </div>

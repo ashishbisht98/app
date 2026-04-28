@@ -28,13 +28,13 @@ export default function TechStack() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 lg:px-14 py-20 md:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           <div className="lg:col-span-7">
-            <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-signal mb-4">
+            <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-signal mb-4">
               / Stack
             </div>
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.02] text-white">
+            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.02] text-ink">
               The tools real teams ship with.
             </h2>
-            <p className="mt-6 text-zinc-400 text-lg max-w-2xl leading-relaxed">
+            <p className="mt-6 text-warm-600 text-lg max-w-2xl leading-relaxed">
               You'll get hands-on with the same toolchain used by professional mobile
               teams. No toy frameworks. No dead-end stacks.
             </p>
@@ -46,17 +46,17 @@ export default function TechStack() {
                   className="grid grid-cols-12 border-r border-b border-grid hover:bg-void-surface transition-colors"
                   data-testid={`stack-${i}`}
                 >
-                  <div className="col-span-2 sm:col-span-1 border-r border-grid p-5 flex items-center justify-center font-mono text-xs text-zinc-500">
+                  <div className="col-span-2 sm:col-span-1 border-r border-grid p-5 flex items-center justify-center font-mono text-xs text-warm-500">
                     {String(i + 1).padStart(2, "0")}
                   </div>
                   <div className="col-span-10 sm:col-span-7 p-5 flex flex-col justify-center">
-                    <div className="font-display text-lg sm:text-xl text-white">
+                    <div className="font-display text-lg sm:text-xl text-ink">
                       {s.name}
                     </div>
-                    <div className="text-sm text-zinc-500">{s.desc}</div>
+                    <div className="text-sm text-warm-500">{s.desc}</div>
                   </div>
                   <div className="col-span-12 sm:col-span-4 border-t sm:border-t-0 sm:border-l border-grid p-5 flex items-center">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-warm-500">
                       {s.tag}
                     </span>
                   </div>
@@ -72,14 +72,14 @@ export default function TechStack() {
                 style={{ backgroundImage: `url('${TECH_IMG}')` }}
               />
               <div className="p-6 border-t border-grid bg-void-surface">
-                <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-4">
+                <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-warm-500 mb-4">
                   / Requirements
                 </div>
                 <ul className="space-y-3">
                   {REQS.map((r, i) => (
                     <li
                       key={i}
-                      className="flex items-start gap-3 text-zinc-300"
+                      className="flex items-start gap-3 text-warm-700"
                       data-testid={`req-${i}`}
                     >
                       <Check size={18} className="text-signal mt-0.5 shrink-0" strokeWidth={2.5} />

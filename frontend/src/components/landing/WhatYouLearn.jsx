@@ -57,15 +57,15 @@ export default function WhatYouLearn() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 lg:px-14 py-20 md:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-14">
           <div className="lg:col-span-5">
-            <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-signal mb-4">
+            <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-signal mb-4">
               / Curriculum
             </div>
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.02] text-white">
+            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.02] text-ink">
               Everything you need to ship a real app.
             </h2>
           </div>
           <div className="lg:col-span-6 lg:col-start-7 flex items-end">
-            <p className="text-lg text-zinc-400 leading-relaxed">
+            <p className="text-lg text-warm-600 leading-relaxed">
               Six focused modules covering the entire mobile development stack — from
               writing your first Kotlin function to publishing on the Play Store.
             </p>
@@ -80,19 +80,19 @@ export default function WhatYouLearn() {
               data-testid={`curriculum-item-${n}`}
             >
               <div className="flex items-start justify-between mb-8">
-                <span className="font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
+                <span className="font-mono text-xs uppercase tracking-[0.18em] text-warm-500">
                   {n}
                 </span>
                 <Icon
                   size={22}
                   strokeWidth={1.5}
-                  className="text-zinc-500 group-hover:text-signal transition-colors"
+                  className="text-warm-500 group-hover:text-signal transition-colors"
                 />
               </div>
-              <h3 className="font-display text-xl sm:text-2xl text-white mb-3 leading-tight">
+              <h3 className="font-display text-xl sm:text-2xl text-ink mb-3 leading-tight">
                 {title}
               </h3>
-              <p className="text-sm text-zinc-400 leading-relaxed">{desc}</p>
+              <p className="text-sm text-warm-600 leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>

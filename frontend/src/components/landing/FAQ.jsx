@@ -47,13 +47,13 @@ export default function FAQ() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 lg:px-14 py-20 md:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           <div className="lg:col-span-5">
-            <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-signal mb-4">
+            <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-signal mb-4">
               / FAQ
             </div>
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.02] text-white">
+            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.02] text-ink">
               Things people ask before they sign up.
             </h2>
-            <p className="mt-6 text-lg text-zinc-400 leading-relaxed">
+            <p className="mt-6 text-lg text-warm-600 leading-relaxed">
               Still have questions? Ping us on WhatsApp — we usually reply within
               an hour during working hours.
             </p>
@@ -68,16 +68,16 @@ export default function FAQ() {
                 >
                   <AccordionTrigger
                     data-testid={`faq-${i}`}
-                    className="text-left text-white font-display text-lg sm:text-xl hover:no-underline py-6"
+                    className="text-left text-ink font-display text-lg sm:text-xl hover:no-underline py-6"
                   >
                     <span className="flex items-start gap-4">
-                      <span className="font-mono text-xs text-zinc-500 mt-1.5">
+                      <span className="font-mono text-xs text-warm-500 mt-1.5">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       {f.q}
                     </span>
                   </AccordionTrigger>
-                  <AccordionContent className="text-zinc-400 leading-relaxed pl-10 pb-6">
+                  <AccordionContent className="text-warm-600 leading-relaxed pl-10 pb-6">
                     {f.a}
                   </AccordionContent>
                 </AccordionItem>

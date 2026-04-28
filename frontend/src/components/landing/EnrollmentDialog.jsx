@@ -140,24 +140,24 @@ export default function EnrollmentDialog() {
   return (
     <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent
-        className="bg-void-surface border border-grid text-white max-w-lg p-0 rounded-none"
+        className="bg-void-surface border border-grid text-ink max-w-lg p-0 rounded-md"
         data-testid="enrollment-dialog"
       >
         {success ? (
           <div className="p-8">
             <CheckCircle2 size={36} className="text-signal mb-4" strokeWidth={1.5} />
             <DialogHeader>
-              <DialogTitle className="font-display text-3xl text-white">
+              <DialogTitle className="font-display text-3xl text-ink">
                 You're in.
               </DialogTitle>
-              <DialogDescription className="text-zinc-400 text-base mt-2">
+              <DialogDescription className="text-warm-600 text-base mt-2">
                 We've saved your details. You'll receive a WhatsApp confirmation with batch
                 joining instructions shortly. Welcome to Orchitek.
               </DialogDescription>
             </DialogHeader>
             <button
               onClick={() => handleClose(false)}
-              className="mt-8 w-full bg-signal hover:bg-signal-hover text-white font-medium py-3 transition-colors"
+              className="mt-8 w-full bg-signal hover:bg-signal-hover text-white rounded-md font-medium py-3 transition-colors"
               data-testid="enrollment-close-btn"
             >
               Close
@@ -165,21 +165,21 @@ export default function EnrollmentDialog() {
           </div>
         ) : (
           <form onSubmit={submit} className="p-8" data-testid="enrollment-form">
-            <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-signal mb-3">
+            <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-signal mb-3">
               / Reserve your seat
             </div>
             <DialogHeader>
-              <DialogTitle className="font-display text-3xl text-white tracking-tight">
+              <DialogTitle className="font-display text-3xl text-ink tracking-tight">
                 Enroll — Mobile App Course
               </DialogTitle>
-              <DialogDescription className="text-zinc-500 text-sm mt-1">
+              <DialogDescription className="text-warm-500 text-sm mt-1">
                 1-month live program · New batch starts on the 1st
               </DialogDescription>
             </DialogHeader>
 
             <div className="mt-6 grid grid-cols-1 gap-4">
               <div>
-                <Label htmlFor="name" className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                <Label htmlFor="name" className="font-mono text-[10px] uppercase tracking-[0.16em] text-warm-500">
                   Full Name
                 </Label>
                 <Input
@@ -187,14 +187,14 @@ export default function EnrollmentDialog() {
                   data-testid="enroll-name"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="mt-2 bg-void border-grid rounded-none text-white focus-visible:ring-signal focus-visible:ring-offset-0"
+                  className="mt-2 bg-void border-grid rounded-md text-ink focus-visible:ring-signal focus-visible:ring-offset-0"
                   placeholder="Aarav Mehta"
                   required
                 />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="email" className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                  <Label htmlFor="email" className="font-mono text-[10px] uppercase tracking-[0.16em] text-warm-500">
                     Email
                   </Label>
                   <Input
@@ -203,13 +203,13 @@ export default function EnrollmentDialog() {
                     data-testid="enroll-email"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="mt-2 bg-void border-grid rounded-none text-white focus-visible:ring-signal focus-visible:ring-offset-0"
+                    className="mt-2 bg-void border-grid rounded-md text-ink focus-visible:ring-signal focus-visible:ring-offset-0"
                     placeholder="you@example.com"
                     required
                   />
                 </div>
                 <div>
-                  <Label htmlFor="phone" className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                  <Label htmlFor="phone" className="font-mono text-[10px] uppercase tracking-[0.16em] text-warm-500">
                     Phone
                   </Label>
                   <Input
@@ -217,7 +217,7 @@ export default function EnrollmentDialog() {
                     data-testid="enroll-phone"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    className="mt-2 bg-void border-grid rounded-none text-white focus-visible:ring-signal focus-visible:ring-offset-0"
+                    className="mt-2 bg-void border-grid rounded-md text-ink focus-visible:ring-signal focus-visible:ring-offset-0"
                     placeholder="+91 ..."
                     required
                   />
@@ -226,34 +226,34 @@ export default function EnrollmentDialog() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <Label className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                  <Label className="font-mono text-[10px] uppercase tracking-[0.16em] text-warm-500">
                     Schedule
                   </Label>
                   <Select value={schedule} onValueChange={setSchedule}>
                     <SelectTrigger
-                      className="mt-2 bg-void border-grid rounded-none text-white focus:ring-signal"
+                      className="mt-2 bg-void border-grid rounded-md text-ink focus:ring-signal"
                       data-testid="enroll-schedule"
                     >
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="bg-void-surface border-grid text-white rounded-none">
+                    <SelectContent className="bg-void-surface border-grid text-ink rounded-md">
                       <SelectItem value="weekday">Weekday (Mon–Fri, 1hr)</SelectItem>
                       <SelectItem value="weekend">Weekend (Sat–Sun, 3hr)</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
                 <div>
-                  <Label className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                  <Label className="font-mono text-[10px] uppercase tracking-[0.16em] text-warm-500">
                     Plan
                   </Label>
                   <Select value={plan} onValueChange={setPlan}>
                     <SelectTrigger
-                      className="mt-2 bg-void border-grid rounded-none text-white focus:ring-signal"
+                      className="mt-2 bg-void border-grid rounded-md text-ink focus:ring-signal"
                       data-testid="enroll-plan"
                     >
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="bg-void-surface border-grid text-white rounded-none">
+                    <SelectContent className="bg-void-surface border-grid text-ink rounded-md">
                       <SelectItem value="regular">Regular — ₹5,999</SelectItem>
                       <SelectItem value="student">Student — ₹4,999</SelectItem>
                     </SelectContent>
@@ -262,7 +262,7 @@ export default function EnrollmentDialog() {
               </div>
 
               <div>
-                <Label htmlFor="message" className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                <Label htmlFor="message" className="font-mono text-[10px] uppercase tracking-[0.16em] text-warm-500">
                   Anything to share? (optional)
                 </Label>
                 <Textarea
@@ -278,17 +278,17 @@ export default function EnrollmentDialog() {
 
             <div className="mt-6 flex items-center justify-between border-t border-grid pt-5">
               <div>
-                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-warm-500">
                   Total
                 </div>
-                <div className="font-display text-3xl text-white">
+                <div className="font-display text-3xl text-ink">
                   ₹{PRICE[plan].toLocaleString("en-IN")}
                 </div>
               </div>
               <button
                 type="submit"
                 disabled={loading}
-                className="inline-flex items-center gap-2 bg-signal hover:bg-signal-hover disabled:opacity-60 text-white font-medium px-6 py-3 transition-colors"
+                className="inline-flex items-center gap-2 bg-signal hover:bg-signal-hover disabled:opacity-60 text-white rounded-md font-medium px-6 py-3 transition-colors"
                 data-testid="enroll-submit"
               >
                 {loading ? (
@@ -303,7 +303,7 @@ export default function EnrollmentDialog() {
               </button>
             </div>
 
-            <div className="mt-4 flex items-center gap-2 text-zinc-500 text-xs">
+            <div className="mt-4 flex items-center gap-2 text-warm-500 text-xs">
               <ShieldCheck size={14} className="text-electric" />
               Encrypted checkout · UPI · Cards · Netbanking · Wallets
             </div>

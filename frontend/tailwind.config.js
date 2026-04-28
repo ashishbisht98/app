@@ -8,24 +8,38 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                display: ['"Clash Display"', "ui-sans-serif", "system-ui"],
+                display: ['"Fraunces"', "ui-serif", "Georgia", "serif"],
                 sans: ['"IBM Plex Sans"', "ui-sans-serif", "system-ui"],
                 mono: ['"JetBrains Mono"', "ui-monospace", "monospace"],
             },
             colors: {
+                /* Re-mapped tokens — kept names for backwards compatibility */
                 void: {
-                    DEFAULT: "#050505",
-                    surface: "#0C0C0C",
-                    elevated: "#141414",
+                    DEFAULT: "#FBF7F1",   // page bg (cream)
+                    surface: "#F3EBDC",   // soft beige (elevated cards)
+                    elevated: "#EAE0CE",  // deeper warm
                 },
                 signal: {
-                    DEFAULT: "#FF4400",
-                    hover: "#FF6A33",
+                    DEFAULT: "#D86A35",   // warm terracotta
+                    hover: "#B8521E",
                 },
-                grid: "#1A1A1A",
-                gridhi: "#333333",
-                electric: "#0055FF",
+                grid: "#EADFCB",          // warm hairline border
+                gridhi: "#C9B89C",        // stronger warm border
+                electric: "#3F7A6B",      // warm sage/teal accent
                 whatsapp: "#25D366",
+                ink: "#2A1F18",           // primary warm dark text
+                warm: {
+                    50: "#FBF7F1",
+                    100: "#F3EBDC",
+                    200: "#E7DBC2",
+                    300: "#C9BCA4",
+                    400: "#A99B8C",
+                    500: "#8A7A6B",
+                    600: "#6B5A4D",
+                    700: "#4A3B30",
+                    800: "#332620",
+                    900: "#2A1F18",
+                },
                 background: 'hsl(var(--background))',
                 foreground: 'hsl(var(--foreground))',
                 card: {
@@ -86,7 +100,7 @@ module.exports = {
             animation: {
                 'accordion-down': 'accordion-down 0.2s ease-out',
                 'accordion-up': 'accordion-up 0.2s ease-out',
-                marquee: 'marquee 40s linear infinite',
+                marquee: 'marquee 50s linear infinite',
                 'fade-up': 'fade-up 0.6s ease-out both'
             }
         }
