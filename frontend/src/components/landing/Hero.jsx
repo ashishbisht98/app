@@ -1,0 +1,130 @@
+import React from "react";
+import { ArrowRight, MessageCircle, Smartphone, Cpu } from "lucide-react";
+import { useEnrollment } from "./EnrollmentDialog";
+
+const HERO_IMG =
+  "https://images.pexels.com/photos/18545023/pexels-photo-18545023.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
+
+const WHATSAPP_NUMBER = "919999999999"; // placeholder
+
+export default function Hero() {
+  const { openDialog } = useEnrollment();
+  return (
+    <section
+      id="top"
+      className="relative overflow-hidden border-b border-grid"
+      data-testid="hero-section"
+    >
+      <div
+        className="absolute inset-0 opacity-30"
+        style={{
+          backgroundImage: `url('${HERO_IMG}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-void via-void/85 to-void/40" />
+      <div className="absolute inset-0 bg-techgrid opacity-40" />
+
+      <div className="relative mx-auto max-w-[1400px] px-6 md:px-10 lg:px-14 py-20 md:py-28 lg:py-36">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
+          <div className="lg:col-span-8">
+            <div className="inline-flex items-center gap-2 border border-grid px-3 py-1.5 mb-8 bg-void/60">
+              <span className="block w-2 h-2 bg-signal animate-pulse" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-400">
+                New batch starts on the 1st of every month
+              </span>
+            </div>
+
+            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-semibold tracking-tighter leading-[0.95] text-white">
+              Build real <span className="text-signal">Android &amp; iOS</span> apps.
+              <br />
+              From zero to <span className="underline decoration-signal decoration-[3px] underline-offset-[6px]">Play Store</span>.
+            </h1>
+
+            <p className="mt-8 max-w-2xl text-base sm:text-lg text-zinc-400 leading-relaxed">
+              A 1-month online live program that teaches you the full mobile workflow —
+              frontend, backend, auth, security, APIs, architecture and AI-assisted
+              development. No prior coding required.
+            </p>
+
+            <div className="mt-10 flex flex-wrap gap-4">
+              <button
+                onClick={openDialog}
+                className="inline-flex items-center gap-2 bg-signal hover:bg-signal-hover text-white font-medium px-7 py-4 transition-colors"
+                data-testid="hero-enroll-btn"
+              >
+                Enroll Now <ArrowRight size={18} />
+              </button>
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20Orchitek%2C%20I%27m%20interested%20in%20the%20Mobile%20App%20Course.`}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 border border-gridhi hover:border-white text-white font-medium px-7 py-4 transition-colors"
+                data-testid="hero-whatsapp-btn"
+              >
+                <MessageCircle size={18} /> Chat on WhatsApp
+              </a>
+            </div>
+
+            <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-0 border-t border-l border-grid">
+              {[
+                { k: "01", v: "1 month", l: "Duration" },
+                { k: "02", v: "Live", l: "Online classes" },
+                { k: "03", v: "Android + iOS", l: "Platforms" },
+                { k: "04", v: "Rs. 4999", l: "Student price" },
+              ].map((s) => (
+                <div
+                  key={s.k}
+                  className="border-r border-b border-grid p-5"
+                  data-testid={`hero-stat-${s.k}`}
+                >
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                    {s.k} / {s.l}
+                  </div>
+                  <div className="mt-2 font-display text-xl sm:text-2xl text-white">
+                    {s.v}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="hidden lg:block lg:col-span-4">
+            <div className="relative border border-grid bg-void/60 p-6">
+              <div className="flex items-center justify-between mb-5">
+                <div className="flex gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-signal" />
+                </div>
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                  ~/orchitek
+                </span>
+              </div>
+              <pre className="font-mono text-xs leading-relaxed text-zinc-300 whitespace-pre-wrap">
+{`> kotlin --multiplatform init
+✓ android target ready
+✓ ios target ready
+✓ firebase backend linked
+✓ auth + security configured
+
+> deploy --target play-store
+✓ signed bundle generated
+✓ uploaded to console
+✓ live in 4 weeks`}
+              </pre>
+              <div className="mt-6 flex items-center gap-3 pt-4 border-t border-grid">
+                <Smartphone size={16} className="text-signal" />
+                <Cpu size={16} className="text-electric" />
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+                  Production-grade workflow
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
