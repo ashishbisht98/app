@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ArrowRight, MessageCircle, Smartphone, Cpu } from "lucide-react";
 import { useEnrollment } from "./EnrollmentDialog";
 
@@ -7,8 +7,65 @@ const HERO_IMG =
 
 const WHATSAPP_NUMBER = "919999999999"; // placeholder
 
+const CODE_TABS = [
+  {
+    name: "~/App.kt",
+    code: `import androidx.compose.runtime.*
+import androidx.compose.material.*
+
+@Composable
+fun App() {
+    MaterialTheme {
+        Column {
+            Text("Welcome to Orchitek!")
+            Button(onClick = { /* Navigate */ }) {
+                Text("Enroll Now")
+            }
+        }
+    }
+}`,
+  },
+
+  {
+    name: "~/Login.kt",
+    code: `import androidx.compose.runtime.*
+import androidx.compose.material.*
+
+@Composable
+fun Login() {
+    MaterialTheme {
+        Column {
+            Text("Login to Orchitek")
+            Button(onClick = { /* Authenticate */ }) {
+                Text("Sign In")
+            }
+        }
+    }
+}`,
+  },
+  {
+    name: "~/Home.kt",
+    code: `import androidx.compose.runtime.*
+import androidx.compose.material.*
+
+@Composable
+fun Home() {
+    MaterialTheme {
+        Column {
+            Text("Orchitek Home Screen")
+            Button(onClick = { /* Start course */ }) {
+                Text("Start Learning")
+            }
+        }
+    }
+}`,
+  },
+];
+
 export default function Hero() {
   const { openDialog } = useEnrollment();
+  const [activeTab, setActiveTab] = useState(0);
+
   return (
     <section
       id="top"
@@ -30,7 +87,7 @@ export default function Hero() {
           <div className="lg:col-span-8">
             <div className="inline-flex items-center gap-2 border border-grid px-3 py-1.5 mb-8 bg-void-surface/60 rounded-md">
               <span className="block w-2 h-2 bg-signal rounded-full animate-pulse" />
-              <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-warm-600">
+              <span className="font-sans font-bold text-[12px] uppercase tracking-[0.18em] text-warm-600">
                 New batch starts on the 1st of every month
               </span>
             </div>
@@ -78,7 +135,7 @@ export default function Hero() {
                   className="border-r border-b border-grid p-5"
                   data-testid={`hero-stat-${s.k}`}
                 >
-                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-warm-500">
+                  <div className="font-mono font-bold text-[10px] uppercase tracking-[0.2em] text-warm-500">
                     {s.k} / {s.l}
                   </div>
                   <div className="mt-2 font-display text-xl sm:text-2xl text-ink">
@@ -93,31 +150,31 @@ export default function Hero() {
             <div className="relative border border-grid bg-void-surface p-6 rounded-md shadow-sm">
               <div className="flex items-center justify-between mb-5">
                 <div className="flex gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-warm-300" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-warm-300" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-signal" />
+                  {CODE_TABS.map((tab, index) => (
+                    <button
+                      key={tab.name}
+                      type="button"
+                      onClick={() => setActiveTab(index)}
+                      className={`w-2.5 h-2.5 rounded-full transition-colors focus:outline-none ${activeTab === index
+                        ? "bg-signal"
+                        : "bg-warm-300 hover:bg-warm-200"
+                        }`}
+                      aria-label={`Show ${tab.name}`}
+                    />
+                  ))}
                 </div>
                 <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-warm-500">
-                  ~/orchitek
+                  {CODE_TABS[activeTab].name}
                 </span>
               </div>
               <pre className="font-mono text-xs leading-relaxed text-warm-800 whitespace-pre-wrap">
-{`> kotlin --multiplatform init
-✓ android target ready
-✓ ios target ready
-✓ firebase backend linked
-✓ auth + security configured
-
-> deploy --target play-store
-✓ signed bundle generated
-✓ uploaded to console
-✓ live in 4 weeks`}
+                {CODE_TABS[activeTab].code}
               </pre>
               <div className="mt-6 flex items-center gap-3 pt-4 border-t border-grid">
                 <Smartphone size={16} className="text-signal" />
                 <Cpu size={16} className="text-electric" />
                 <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-warm-500">
-                  Production-grade workflow
+                  Cross-platform Compose code
                 </span>
               </div>
             </div>

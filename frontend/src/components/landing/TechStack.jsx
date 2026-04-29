@@ -2,11 +2,36 @@ import React from "react";
 import { Check } from "lucide-react";
 
 const STACK = [
-  { name: "Android Studio", desc: "IDE", tag: "IDE" },
-  { name: "Kotlin Multiplatform", desc: "Android + iOS from one codebase", tag: "Language" },
-  { name: "Firebase", desc: "Auth, DB & cloud functions", tag: "Backend" },
-  { name: "Google Developer Console", desc: "Play Store publishing", tag: "Publishing" },
-  { name: "Google Cloud Console", desc: "Cloud infra & services", tag: "Cloud" },
+  {
+    name: "Android Studio",
+    desc: "IDE",
+    tag: "IDE",
+    blurb: "The industry-standard IDE for Android development — fast, feature-rich, and production-ready.",
+  },
+  {
+    name: "Kotlin Multiplatform",
+    desc: "Android + iOS from one codebase",
+    tag: "Language",
+    blurb: "Write shared business logic once and ship native apps on multiple platforms.",
+  },
+  {
+    name: "Firebase",
+    desc: "Auth, DB & cloud functions",
+    tag: "Backend",
+    blurb: "Real-time database, auth, and serverless functions to accelerate development and iterate quickly.",
+  },
+  {
+    name: "Google Developer Console",
+    desc: "Play Store publishing",
+    tag: "Publishing",
+    blurb: "Manage releases, app signing, and distribution to millions of users with confidence.",
+  },
+  {
+    name: "Google Cloud Console",
+    desc: "Cloud infra & services",
+    tag: "Cloud",
+    blurb: "Scalable cloud services and observability to run production-grade mobile backends.",
+  },
 ];
 
 const REQS = [
@@ -43,22 +68,21 @@ export default function TechStack() {
               {STACK.map((s, i) => (
                 <div
                   key={i}
-                  className="grid grid-cols-12 border-r border-b border-grid hover:bg-void-surface transition-colors"
+                  className="group grid grid-cols-12 border-r border-b border-grid hover:bg-void-surface transform transition-all duration-500 ease-out hover:scale-105 hover:shadow-lg"
                   data-testid={`stack-${i}`}
                 >
                   <div className="col-span-2 sm:col-span-1 border-r border-grid p-5 flex items-center justify-center font-mono text-xs text-warm-500">
                     {String(i + 1).padStart(2, "0")}
                   </div>
                   <div className="col-span-10 sm:col-span-7 p-5 flex flex-col justify-center">
-                    <div className="font-display text-lg sm:text-xl text-ink">
-                      {s.name}
-                    </div>
+                    <div className="font-display text-lg sm:text-xl text-ink">{s.name}</div>
                     <div className="text-sm text-warm-500">{s.desc}</div>
+                    <p className="mt-3 text-sm text-warm-600 opacity-0 transform translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-opacity transition-transform duration-500 ease-out motion-reduce:transition-none">
+                      {s.blurb}
+                    </p>
                   </div>
                   <div className="col-span-12 sm:col-span-4 border-t sm:border-t-0 sm:border-l border-grid p-5 flex items-center">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-warm-500">
-                      {s.tag}
-                    </span>
+                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-warm-500">{s.tag}</span>
                   </div>
                 </div>
               ))}

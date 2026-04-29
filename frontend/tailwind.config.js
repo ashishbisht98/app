@@ -8,14 +8,14 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                display: ['"Fraunces"', "ui-serif", "Georgia", "serif"],
+                display: ['"Grotesque A1"', "ui-sans-serif", "system-ui"],
                 sans: ['"IBM Plex Sans"', "ui-sans-serif", "system-ui"],
-                mono: ['"JetBrains Mono"', "ui-monospace", "monospace"],
+                mono: [ "SF Mono", "SF Mono Regular", "SF Mono Medium", "SF Mono SemiBold", "SF Mono Bold", "SF Mono Heavy", "SF Mono Black", "monospace"],
             },
             colors: {
                 /* Re-mapped tokens — kept names for backwards compatibility */
                 void: {
-                    DEFAULT: "#FBF7F1",   // page bg (cream)
+                    DEFAULT: "#e2dbd0",   // page bg (cream)
                     surface: "#F3EBDC",   // soft beige (elevated cards)
                     elevated: "#EAE0CE",  // deeper warm
                 },

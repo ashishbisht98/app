@@ -33,7 +33,7 @@ export default function Header() {
             <a
               key={n.href}
               href={n.href}
-              className="font-mono text-xs uppercase tracking-[0.2em] text-warm-600 hover:text-signal transition-colors"
+              className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-ink hover:text-signal transition-colors"
               data-testid={`nav-${n.label.toLowerCase()}`}
             >
               {n.label}
@@ -68,7 +68,7 @@ export default function Header() {
                 key={n.href}
                 href={n.href}
                 onClick={() => setOpen(false)}
-                className="font-mono text-xs uppercase tracking-[0.2em] text-warm-600"
+                className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-ink"
                 data-testid={`mobile-nav-${n.label.toLowerCase()}`}
               >
                 {n.label}
