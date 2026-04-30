@@ -51,7 +51,7 @@ export default function Testimonials() {
     <section id="reviews" className="border-b border-grid" data-testid="testimonials-section">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 lg:px-14 py-20 md:py-28">
         <div className="max-w-3xl mb-14">
-          <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-signal mb-4">
+          <div className="font-mono text-[14px] uppercase tracking-[0.18em] text-signal mb-4">
             / Reviews
           </div>
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.02] text-ink">

@@ -48,7 +48,7 @@ export default function Pricing() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 lg:px-14 py-20 md:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-14">
           <div className="lg:col-span-6">
-            <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-signal mb-4">
+            <div className="font-mono text-[14px] uppercase tracking-[0.18em] text-signal mb-4">
               / Pricing
             </div>
             <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.02] text-ink">

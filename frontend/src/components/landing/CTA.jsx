@@ -11,7 +11,7 @@ export default function CTA() {
       <div className="absolute inset-0 bg-techgrid opacity-30" />
       <div className="relative mx-auto max-w-[1400px] px-6 md:px-10 lg:px-14 py-24 md:py-32">
         <div className="max-w-4xl">
-          <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-signal mb-6">
+          <div className="font-mono text-[14px] uppercase tracking-[0.18em] text-signal mb-6">
             / Next batch · 1st of next month
           </div>
           <h2 className="font-display text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tighter leading-[0.95] text-ink">
