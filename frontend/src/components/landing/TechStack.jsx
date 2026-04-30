@@ -77,7 +77,7 @@ export default function TechStack() {
                   <div className="col-span-10 sm:col-span-7 p-5 flex flex-col justify-center">
                     <div className="font-display text-lg sm:text-xl text-ink">{s.name}</div>
                     <div className="text-sm text-warm-500">{s.desc}</div>
-                    <p className="mt-3 text-sm text-warm-600 opacity-0 transform translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-opacity transition-transform duration-500 ease-out motion-reduce:transition-none">
+                    <p className="mt-0 text-sm text-warm-600 max-h-0 overflow-hidden opacity-0 transform -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:max-h-40 group-hover:mt-3 transition-all duration-500 ease-out motion-reduce:transition-none">
                       {s.blurb}
                     </p>
                   </div>

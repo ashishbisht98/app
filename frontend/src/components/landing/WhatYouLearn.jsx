@@ -72,11 +72,11 @@ export default function WhatYouLearn() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border-t border-l border-grid">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {ITEMS.map(({ n, icon: Icon, title, desc }) => (
             <div
               key={n}
-              className="group border-r border-b border-grid p-8 lg:p-10 bg-void hover:bg-void-surface transition-colors"
+              className="group p-8 lg:p-10 bg-void hover:bg-void-surface transition-colors rounded-lg shadow-md hover:shadow-lg"
               data-testid={`curriculum-item-${n}`}
             >
               <div className="flex items-start justify-between mb-8">

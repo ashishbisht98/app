@@ -21,11 +21,8 @@ export default function Header() {
       data-testid="site-header"
     >
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 lg:px-14 h-16 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-2" data-testid="brand-logo">
-          <span className="font-display text-2xl font-bold tracking-tighter text-ink">
-            Orchitek
-          </span>
-          <span className="block w-2 h-2 bg-signal" />
+        <a href="#top" className="flex items-center gap-0" data-testid="brand-logo">
+          <img src="/images/orchitek.png" alt="Orchitek Logo" className="w-[200px] rounded-xl h-auto object-fit" />
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -44,7 +41,7 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <button
             onClick={openDialog}
-            className="hidden sm:inline-flex bg-signal hover:bg-signal-hover text-white rounded-md font-medium px-5 py-2.5 transition-colors"
+            className="hidden sm:inline-flex bg-signal hover:bg-signal-hover text-white rounded-xl font-medium px-5 py-2.5 transition-colors"
             data-testid="header-enroll-btn"
           >
             Enroll Now
@@ -76,7 +73,7 @@ export default function Header() {
             ))}
             <button
               onClick={() => { setOpen(false); openDialog(); }}
-              className="bg-signal hover:bg-signal-hover text-white rounded-md font-medium px-5 py-3 mt-2"
+              className="bg-signal hover:bg-signal-hover text-white rounded-xl font-medium px-5 py-3 mt-2"
               data-testid="mobile-enroll-btn"
             >
               Enroll Now
