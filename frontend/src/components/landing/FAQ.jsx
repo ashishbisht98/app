@@ -59,12 +59,12 @@ export default function FAQ() {
             </p>
           </div>
           <div className="lg:col-span-7 lg:col-start-6">
-            <Accordion type="single" collapsible className="border-t border-grid">
+            <Accordion type="single" collapsible className="rounded-2xl border border-grid bg-void overflow-hidden shadow-[0_15px_40px_-20px_rgba(42,31,24,0.18)]">
               {FAQS.map((f, i) => (
                 <AccordionItem
                   key={i}
                   value={`item-${i}`}
-                  className="border-b border-grid"
+                  className="border-b border-grid last:border-b-0 px-5"
                 >
                   <AccordionTrigger
                     data-testid={`faq-${i}`}
