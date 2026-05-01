@@ -63,17 +63,19 @@ export default function Pricing() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-t border-l border-grid">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {PLANS.map((p) => (
             <div
               key={p.key}
-              className={`relative border-r border-b border-grid p-8 md:p-10 lg:p-12 ${
-                p.accent ? "bg-void-surface" : "bg-void"
+              className={`relative p-8 md:p-10 lg:p-12 rounded-2xl border ${
+                p.accent
+                  ? "bg-void-surface border-signal/20 shadow-[0_20px_50px_-20px_rgba(216,106,53,0.35)]"
+                  : "bg-void border-grid shadow-[0_15px_40px_-20px_rgba(42,31,24,0.18)]"
               }`}
               data-testid={`plan-${p.key}`}
             >
               {p.accent && (
-                <div className="absolute top-0 right-0 bg-signal text-ink px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] flex items-center gap-1">
+                <div className="absolute -top-3 right-6 bg-signal text-white px-3 py-1.5 rounded-md font-mono text-[10px] uppercase tracking-[0.18em] flex items-center gap-1 shadow-md">
                   <Sparkles size={12} /> Best Value
                 </div>
               )}
@@ -88,7 +90,7 @@ export default function Pricing() {
                   {p.price}
                 </span>
                 <span className="font-mono text-xs uppercase tracking-[0.18em] text-warm-500">
-                  / one-time
+                  course fee
                 </span>
               </div>
 
@@ -110,21 +112,21 @@ export default function Pricing() {
 
               <button
                 onClick={() => buy(p.key)}
-                className={`mt-8 w-full font-medium py-4 transition-colors ${
+                className={`mt-8 w-full font-medium py-4 rounded-xl transition-all ${
                   p.accent
-                    ? "bg-signal hover:bg-signal-hover text-white rounded-md"
-                    : "border border-gridhi hover:border-ink hover:bg-void-surface text-ink rounded-md"
+                    ? "bg-signal hover:bg-signal-hover text-white shadow-md hover:shadow-lg"
+                    : "border border-gridhi hover:border-ink hover:bg-void-surface text-ink"
                 }`}
                 data-testid={`plan-cta-${p.key}`}
               >
-                Enroll for {p.price}
+                Reserve seat · ₹100 refundable
               </button>
             </div>
           ))}
         </div>
 
-        <p className="mt-8 text-center font-mono text-[10px] uppercase tracking-[0.18em] text-warm-500">
-          Secure payments by Razorpay · UPI · Cards · Netbanking · Wallets
+        <p className="mt-10 text-center font-mono text-[10px] uppercase tracking-[0.18em] text-warm-500">
+          Secure ₹100 token via Razorpay · UPI · Cards · Netbanking · Wallets · Course fee paid separately
         </p>
       </div>
     </section>

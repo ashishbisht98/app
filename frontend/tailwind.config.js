@@ -14,8 +14,8 @@ module.exports = {
             },
             colors: {
                 /* Re-mapped tokens — kept names for backwards compatibility */
-                void: {
-                    DEFAULT: "#eae6e6",   // page bg (cream)
+               void: {
+                    DEFAULT: "#FBF7F1",   // page bg (cream)
                     surface: "#F3EBDC",   // soft beige (elevated cards)
                     elevated: "#EAE0CE",  // deeper warm
                 },
@@ -23,7 +23,7 @@ module.exports = {
                     DEFAULT: "#D86A35",   // warm terracotta
                     hover: "#B8521E",
                 },
-                grid: "#d4c7b2",          // warm hairline border
+                grid: "#EADFCB",          // warm hairline border
                 gridhi: "#C9B89C",        // stronger warm border
                 electric: "#3F7A6B",      // warm sage/teal accent
                 whatsapp: "#25D366",

@@ -63,11 +63,11 @@ export default function Testimonials() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-grid">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
           {T.map((t, i) => (
             <figure
               key={i}
-              className="border-r border-b border-grid p-8 lg:p-10 bg-void hover:bg-void-surface transition-colors flex flex-col"
+              className="rounded-2xl border border-grid bg-void p-8 lg:p-10 hover:bg-void-surface hover:-translate-y-0.5 hover:shadow-[0_18px_45px_-15px_rgba(216,106,53,0.18)] transition-all duration-300 shadow-[0_10px_30px_-15px_rgba(42,31,24,0.15)] flex flex-col"
               data-testid={`testimonial-${i}`}
             >
               <div className="flex items-center gap-1 mb-5">
@@ -83,7 +83,7 @@ export default function Testimonials() {
                   src={t.img}
                   alt={t.name}
                   loading="lazy"
-                  className="w-10 h-10 object-cover grayscale"
+                  className="w-11 h-11 object-cover rounded-full"
                 />
                 <div>
                   <div className="text-ink text-sm font-medium">{t.name}</div>

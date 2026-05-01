@@ -47,7 +47,8 @@ export function EnrollmentProvider({ children }) {
   );
 }
 
-const PRICE = { regular: 5999, student: 4999 };
+const REGISTRATION_FEE = 100;
+const COURSE_FEE = { regular: 5999, student: 4999 };
 
 export default function EnrollmentDialog() {
   const { open, setOpen, plan, setPlan, schedule, setSchedule } = useEnrollment();
@@ -99,7 +100,7 @@ export default function EnrollmentDialog() {
         amount: data.amount,
         currency: data.currency,
         name: "Orchitek",
-        description: `Mobile App Dev Course — ${plan === "student" ? "Student" : "Regular"} (${schedule})`,
+        description: `Refundable registration token · ${plan === "student" ? "Student" : "Regular"} (${schedule})`,
         order_id: data.order_id,
         prefill: {
           name: data.name,
@@ -151,13 +152,14 @@ export default function EnrollmentDialog() {
                 You're in.
               </DialogTitle>
               <DialogDescription className="text-warm-600 text-base mt-2">
-                We've saved your details. You'll receive a WhatsApp confirmation with batch
-                joining instructions shortly. Welcome to Orchitek.
+                Your seat is reserved. Your ₹{REGISTRATION_FEE} token is fully refundable
+                if you choose not to enroll. We'll send batch joining instructions on
+                WhatsApp shortly.
               </DialogDescription>
             </DialogHeader>
             <button
               onClick={() => handleClose(false)}
-              className="mt-8 w-full bg-signal hover:bg-signal-hover text-white rounded-md font-medium py-3 transition-colors"
+              className="mt-8 w-full bg-signal hover:bg-signal-hover text-white rounded-xl font-medium py-3 transition-colors shadow-md"
               data-testid="enrollment-close-btn"
             >
               Close
@@ -173,7 +175,7 @@ export default function EnrollmentDialog() {
                 Enroll — Mobile App Course
               </DialogTitle>
               <DialogDescription className="text-warm-500 text-sm mt-1">
-                1-month live program · New batch starts on the 1st
+                Pay a refundable ₹{REGISTRATION_FEE} token · New batch starts on the 1st
               </DialogDescription>
             </DialogHeader>
 
@@ -187,7 +189,7 @@ export default function EnrollmentDialog() {
                   data-testid="enroll-name"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="mt-2 bg-void border-grid rounded-md text-ink focus-visible:ring-signal focus-visible:ring-offset-0"
+                  className="mt-2 bg-void border-grid rounded-lg text-ink focus-visible:ring-signal focus-visible:ring-offset-0"
                   placeholder="Aarav Mehta"
                   required
                 />
@@ -203,7 +205,7 @@ export default function EnrollmentDialog() {
                     data-testid="enroll-email"
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="mt-2 bg-void border-grid rounded-md text-ink focus-visible:ring-signal focus-visible:ring-offset-0"
+                    className="mt-2 bg-void border-grid rounded-lg text-ink focus-visible:ring-signal focus-visible:ring-offset-0"
                     placeholder="you@example.com"
                     required
                   />
@@ -217,7 +219,7 @@ export default function EnrollmentDialog() {
                     data-testid="enroll-phone"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    className="mt-2 bg-void border-grid rounded-md text-ink focus-visible:ring-signal focus-visible:ring-offset-0"
+                    className="mt-2 bg-void border-grid rounded-lg text-ink focus-visible:ring-signal focus-visible:ring-offset-0"
                     placeholder="+91 ..."
                     required
                   />
@@ -231,7 +233,7 @@ export default function EnrollmentDialog() {
                   </Label>
                   <Select value={schedule} onValueChange={setSchedule}>
                     <SelectTrigger
-                      className="mt-2 bg-void border-grid rounded-md text-ink focus:ring-signal"
+                      className="mt-2 bg-void border-grid rounded-lg text-ink focus:ring-signal"
                       data-testid="enroll-schedule"
                     >
                       <SelectValue />
@@ -248,7 +250,7 @@ export default function EnrollmentDialog() {
                   </Label>
                   <Select value={plan} onValueChange={setPlan}>
                     <SelectTrigger
-                      className="mt-2 bg-void border-grid rounded-md text-ink focus:ring-signal"
+                      className="mt-2 bg-void border-grid rounded-lg text-ink focus:ring-signal"
                       data-testid="enroll-plan"
                     >
                       <SelectValue />
@@ -276,19 +278,35 @@ export default function EnrollmentDialog() {
               </div>
             </div>
 
-            <div className="mt-6 flex items-center justify-between border-t border-grid pt-5">
+            <div className="mt-6 rounded-md bg-warm-100/70 border border-grid px-4 py-3">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono uppercase tracking-[0.16em] text-warm-600">
+                  Refundable Token
+                </span>
+                <span className="font-display text-2xl text-ink">
+                  ₹{REGISTRATION_FEE}
+                </span>
+              </div>
+              <p className="mt-1 text-[11px] text-warm-500 leading-snug">
+                Pay just ₹{REGISTRATION_FEE} now to reserve your seat. Fully refundable
+                if you choose not to enroll before batch start. Course fee
+                (₹{COURSE_FEE[plan].toLocaleString("en-IN")}) is collected separately.
+              </p>
+            </div>
+
+            <div className="mt-5 flex items-center justify-between border-t border-grid pt-5">
               <div>
                 <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-warm-500">
-                  Total
+                  Pay now
                 </div>
                 <div className="font-display text-3xl text-ink">
-                  ₹{PRICE[plan].toLocaleString("en-IN")}
+                  ₹{REGISTRATION_FEE}
                 </div>
               </div>
               <button
                 type="submit"
                 disabled={loading}
-                className="inline-flex items-center gap-2 bg-signal hover:bg-signal-hover disabled:opacity-60 text-white rounded-md font-medium px-6 py-3 transition-colors"
+                className="inline-flex items-center gap-2 bg-signal hover:bg-signal-hover disabled:opacity-60 text-white rounded-md font-medium px-6 py-3 transition-colors shadow-sm"
                 data-testid="enroll-submit"
               >
                 {loading ? (
@@ -297,7 +315,7 @@ export default function EnrollmentDialog() {
                   </>
                 ) : (
                   <>
-                    Pay with Razorpay <ArrowRight size={16} />
+                    Reserve Seat · ₹{REGISTRATION_FEE} <ArrowRight size={16} />
                   </>
                 )}
               </button>

@@ -48,11 +48,11 @@ export default function Schedule() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 border-t border-l border-grid">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {OPTIONS.map((o) => (
             <div
               key={o.key}
-              className="border-r border-b border-grid p-8 md:p-10 lg:p-12 group hover:bg-void-surface transition-colors"
+              className="rounded-2xl border border-grid bg-void p-8 md:p-10 lg:p-12 group hover:bg-void-surface hover:border-signal/30 hover:-translate-y-0.5 transition-all duration-300 shadow-[0_15px_40px_-20px_rgba(42,31,24,0.18)] hover:shadow-[0_20px_50px_-15px_rgba(216,106,53,0.18)]"
               data-testid={`schedule-${o.key}`}
             >
               <div className="flex items-start justify-between">
@@ -91,7 +91,7 @@ export default function Schedule() {
 
               <button
                 onClick={() => choose(o.key)}
-                className="mt-8 inline-flex items-center gap-2 border border-gridhi hover:border-signal hover:text-signal text-ink rounded-md font-medium px-6 py-3 transition-colors"
+                className="mt-8 inline-flex items-center gap-2 border border-gridhi hover:border-signal hover:text-signal text-ink rounded-xl font-medium px-6 py-3 transition-colors"
                 data-testid={`schedule-choose-${o.key}`}
               >
                 Choose {o.label} →

@@ -26,7 +26,7 @@ export default function CTA() {
           <div className="mt-10 flex flex-wrap gap-4">
             <button
               onClick={openDialog}
-              className="inline-flex items-center gap-2 bg-signal hover:bg-signal-hover text-white rounded-md font-medium px-7 py-4 transition-colors shadow-sm"
+              className="inline-flex items-center gap-2 bg-signal hover:bg-signal-hover text-white rounded-xl font-medium px-7 py-4 transition-all shadow-[0_10px_25px_-8px_rgba(216,106,53,0.45)] hover:shadow-[0_14px_30px_-8px_rgba(216,106,53,0.55)] hover:-translate-y-0.5"
               data-testid="cta-enroll-btn"
             >
               Enroll Now <ArrowRight size={18} />
@@ -35,7 +35,7 @@ export default function CTA() {
               href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20Orchitek%2C%20I%20have%20a%20few%20questions%20about%20the%20Mobile%20App%20Course.`}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 border border-gridhi hover:border-ink hover:bg-void-surface text-ink rounded-md font-medium px-7 py-4 transition-colors"
+              className="inline-flex items-center gap-2 border border-gridhi hover:border-ink hover:bg-void-surface text-ink rounded-xl font-medium px-7 py-4 transition-colors shadow-sm"
               data-testid="cta-whatsapp-btn"
             >
               <MessageCircle size={18} /> Talk to us

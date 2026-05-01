@@ -64,25 +64,30 @@ export default function TechStack() {
               teams. No toy frameworks. No dead-end stacks.
             </p>
 
-            <div className="mt-10 border-t border-l border-grid">
+            <div className="mt-10 rounded-2xl bg-void border border-grid shadow-[0_15px_40px_-20px_rgba(42,31,24,0.18)]  overflow-hidden">
               {STACK.map((s, i) => (
                 <div
                   key={i}
-                  className="group grid grid-cols-12 border-r border-b border-grid hover:bg-void-surface transform transition-all duration-500 ease-out hover:scale-105 hover:shadow-lg"
+                  className={`group grid grid-cols-12 hover:bg-void-surface transform transition-all duration-500 ease-out hover:scale-105 hover:shadow-lg transition-colors ${i !== STACK.length - 1 ? "border-b border-grid" : ""
+                    }`}
                   data-testid={`stack-${i}`}
                 >
                   <div className="col-span-2 sm:col-span-1 border-r border-grid p-5 flex items-center justify-center font-mono text-xs text-warm-500">
                     {String(i + 1).padStart(2, "0")}
                   </div>
                   <div className="col-span-10 sm:col-span-7 p-5 flex flex-col justify-center">
-                    <div className="font-display text-lg sm:text-xl text-ink">{s.name}</div>
+                    <div className="font-display text-lg sm:text-xl text-ink">
+                      {s.name}
+                    </div>
                     <div className="text-sm text-warm-500">{s.desc}</div>
                     <p className="mt-0 text-sm text-warm-600 max-h-0 overflow-hidden opacity-0 transform -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:max-h-40 group-hover:mt-3 transition-all duration-500 ease-out motion-reduce:transition-none">
                       {s.blurb}
                     </p>
                   </div>
                   <div className="col-span-12 sm:col-span-4 border-t sm:border-t-0 sm:border-l border-grid p-5 flex items-center">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-warm-500">{s.tag}</span>
+                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-warm-500">
+                      {s.tag}
+                    </span>
                   </div>
                 </div>
               ))}
@@ -90,7 +95,7 @@ export default function TechStack() {
           </div>
 
           <div className="lg:col-span-5">
-            <div className="border border-grid overflow-hidden">
+            <div className="rounded-2xl border border-grid bg-void shadow-[0_15px_40px_-20px_rgba(42,31,24,0.18)] overflow-hidden">
               <div
                 className="aspect-[4/3] bg-cover bg-center"
                 style={{ backgroundImage: `url('${TECH_IMG}')` }}

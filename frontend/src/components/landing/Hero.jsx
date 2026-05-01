@@ -124,16 +124,16 @@ export default function Hero() {
                 <MessageCircle size={18} /> Chat on WhatsApp
               </a>
             </div>
-
-            <div className="mt-14 grid grid-cols-2 sm:grid-cols-3 border-t border-l border-grid rounded-xl overflow-hidden" data-testid="hero-stats">
+            <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4">
               {[
                 { k: "01", v: "1 month", l: "Duration" },
+                { k: "02", v: "Live", l: "Online classes" },
                 { k: "03", v: "Android + iOS", l: "Platforms" },
                 { k: "04", v: "Rs. 4999", l: "Student price" },
               ].map((s) => (
                 <div
                   key={s.k}
-                  className="border-r border-b border-grid  py-5 px-4 flex flex-col items-start"
+                  className="rounded-xl border border-grid bg-void/70 backdrop-blur-sm p-4 shadow-[0_8px_24px_-12px_rgba(42,31,24,0.15)]"
                   data-testid={`hero-stat-${s.k}`}
                 >
                   <div className="font-mono font-bold text-[10px] uppercase tracking-[0.2em] text-warm-500">
