@@ -83,7 +83,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-void via-void/85 to-void/60" />
       <div className="absolute inset-0 bg-techgrid opacity-60" />
 
-      <div className="relative mx-auto max-w-[1500px] xs:px-6 sm:px-6 md:px-6 py-16 md:py-16 lg:py-16">
+      <div className="relative mx-auto max-w-[1500px] px-6 xs:px-6 sm:px-6 md:px-6 py-16 md:py-16 lg:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center ">
           <div className="lg:col-span-6">
             <div className="inline-flex items-center gap-2 border border-grid px-3 py-1.5 mb-8 bg-void-surface/60 rounded-md">

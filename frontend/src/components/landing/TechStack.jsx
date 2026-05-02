@@ -64,28 +64,40 @@ export default function TechStack() {
               teams. No toy frameworks. No dead-end stacks.
             </p>
 
-            <div className="mt-10 rounded-2xl bg-void border border-grid shadow-[0_15px_40px_-20px_rgba(42,31,24,0.18)]  overflow-hidden">
+            <div className="mt-10 rounded-2xl bg-void border border-grid shadow-[0_15px_40px_-20px_rgba(42,31,24,0.18)] overflow-hidden">
               {STACK.map((s, i) => (
                 <div
                   key={i}
-                  className={`group grid grid-cols-12 hover:bg-void-surface transform transition-all duration-500 ease-out hover:scale-105 hover:shadow-lg transition-colors ${i !== STACK.length - 1 ? "border-b border-grid" : ""
+                  className={`group grid grid-cols-12 relative cursor-default transition-colors duration-250 hover:bg-void-surface ${i !== STACK.length - 1 ? "border-b border-grid" : ""
                     }`}
                   data-testid={`stack-${i}`}
                 >
-                  <div className="col-span-2 sm:col-span-1 border-r border-grid p-5 flex items-center justify-center font-mono text-xs text-warm-500">
+                  {/* Left accent bar */}
+                  <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-warm-400 scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] origin-center rounded-r-sm" />
+
+                  {/* Row number */}
+                  <div className="col-span-2 sm:col-span-1 border-r border-grid p-5 flex items-start justify-center font-mono text-xs text-warm-500 pt-[22px]">
                     {String(i + 1).padStart(2, "0")}
                   </div>
-                  <div className="col-span-10 sm:col-span-7 p-5 flex flex-col justify-center">
-                    <div className="font-display text-lg sm:text-xl text-ink">
-                      {s.name}
-                    </div>
+
+                  {/* Main content */}
+                  <div className="col-span-10 sm:col-span-7 px-5 pt-4 pb-4 flex flex-col justify-center">
+                    <div className="font-display text-lg sm:text-xl text-ink">{s.name}</div>
                     <div className="text-sm text-warm-500">{s.desc}</div>
-                    <p className="mt-0 text-sm text-warm-600 max-h-0 overflow-hidden opacity-0 transform -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:max-h-40 group-hover:mt-3 transition-all duration-500 ease-out motion-reduce:transition-none">
-                      {s.blurb}
-                    </p>
+
+                    {/* Inline blurb reveal */}
+                    <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-350 ease-[cubic-bezier(0.4,0,0.2,1)]">
+                      <div className="overflow-hidden">
+                        <p className="mt-2 px-3 py-2 rounded-md bg-void-muted text-xs text-warm-600 leading-relaxed opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-[opacity,transform] duration-250 delay-100 ease-[cubic-bezier(0.4,0,0.2,1)] m-0">
+                          {s.blurb}
+                        </p>
+                      </div>
+                    </div>
                   </div>
+
+                  {/* Tag */}
                   <div className="col-span-12 sm:col-span-4 border-t sm:border-t-0 sm:border-l border-grid p-5 flex items-center">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-warm-500">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-warm-500 transition-colors duration-250 group-hover:text-warm-400">
                       {s.tag}
                     </span>
                   </div>
