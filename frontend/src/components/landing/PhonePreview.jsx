@@ -130,15 +130,6 @@ const Home = ({ onNext }) => {
           </div>
         ))}
       </div>
-      {/* <div className="px-4 pb-5">
-        <button
-          type="button"
-          onClick={() => onNext && onNext()}
-          className="w-full bg-signal text-white text-[11px] font-medium py-2.5 rounded-md"
-        >
-          Start Learning
-        </button>
-      </div> */}
     </div>
   );
 };
