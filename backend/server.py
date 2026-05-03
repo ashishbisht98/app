@@ -41,14 +41,44 @@ async def fs_run(fn, *args, **kwargs):
 
 
 # ---------- Razorpay ----------
-RAZORPAY_KEY_ID = os.environ.get('RAZORPAY_KEY_ID', 'rzp_test_placeholder')
-RAZORPAY_KEY_SECRET = os.environ.get('RAZORPAY_KEY_SECRET', 'placeholder_secret')
-
+# These are loaded at startup, not module init
+RAZORPAY_KEY_ID: str = "rzp_test_placeholder"
+RAZORPAY_KEY_SECRET: str = "placeholder_secret"
 razorpay_client = None
-try:
-    razorpay_client = razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET))
-except Exception as e:
-    logging.warning(f"Razorpay client init failed: {e}")
+RAZORPAY_MODE: str = "UNKNOWN"  # Will be set to TEST or LIVE at startup
+
+def initialize_razorpay():
+    """Initialize Razorpay client with environment variables.
+    Called at app startup to ensure env vars are properly loaded in Vercel.
+    """
+    global RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET, razorpay_client, RAZORPAY_MODE
+    
+    # Load from environment
+    key_id = os.environ.get('RAZORPAY_KEY_ID', 'rzp_test_placeholder')
+    key_secret = os.environ.get('RAZORPAY_KEY_SECRET', 'placeholder_secret')
+    
+    RAZORPAY_KEY_ID = key_id
+    RAZORPAY_KEY_SECRET = key_secret
+    
+    # Determine mode
+    is_test = key_id == "rzp_test_placeholder" or key_secret == "placeholder_secret"
+    RAZORPAY_MODE = "TEST" if is_test else "LIVE"
+    
+    if is_test:
+        logger.warning(
+            "⚠️  RAZORPAY RUNNING IN TEST MODE - Payments will not be processed.\n"
+            "   Set RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET environment variables to use live mode."
+        )
+        razorpay_client = None
+        return
+    
+    # Try to initialize with provided keys
+    try:
+        razorpay_client = razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET))
+        logger.info(f"✓ Razorpay initialized in {RAZORPAY_MODE} mode")
+    except Exception as e:
+        logger.error(f"❌ Razorpay client initialization failed: {e}")
+        razorpay_client = None
 
 # Registration fee — refundable token (in paise). Defaults to ₹100.
 REGISTRATION_FEE_PAISE = int(os.environ.get('REGISTRATION_FEE_PAISE', '10000'))
@@ -109,7 +139,8 @@ class LeadCreate(BaseModel):
 
 # ---------- Helpers ----------
 def is_test_mode() -> bool:
-    return RAZORPAY_KEY_ID == "rzp_test_placeholder" or RAZORPAY_KEY_SECRET == "placeholder_secret"
+    """Check if running in Razorpay test mode."""
+    return RAZORPAY_MODE == "TEST"
 
 
 def course_fee_for(plan: str) -> int:
@@ -133,7 +164,9 @@ async def health():
     return {
         "status": "healthy" if fs_ok else "degraded",
         "firestore_ok": fs_ok,
+        "razorpay_mode": RAZORPAY_MODE,
         "razorpay_configured": not is_test_mode(),
+        "razorpay_client_ready": razorpay_client is not None,
         "registration_fee_inr": REGISTRATION_FEE_PAISE // 100,
     }
 
@@ -249,6 +282,15 @@ async def list_enrollments(limit: int = 100):
         q = ENROLLMENTS.order_by("created_at", direction=firestore.Query.DESCENDING).limit(limit)
         return [d.to_dict() for d in q.stream()]
     return await fs_run(_query)
+
+
+# ---------- Startup Event ----------
+@app.on_event("startup")
+async def startup_event():
+    """Initialize services at app startup."""
+    logger.info("🚀 Orchitek API starting up...")
+    initialize_razorpay()
+    logger.info(f"✓ App initialized - Razorpay mode: {RAZORPAY_MODE}")
 
 
 # ---------- Mount ----------
