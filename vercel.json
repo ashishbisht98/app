@@ -2,18 +2,6 @@
   "version": 2,
   "installCommand": "npm --prefix frontend ci",
   "buildCommand": "npm --prefix frontend run build",
-  "builds": [
-    { "src": "backend/server.py", "use": "@vercel/python" },
-    {
-      "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "build" }
-    }
-  ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "backend/server.py" },
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.html" }
-  ]
+  "outputDirectory": "frontend/build"
 }
 
