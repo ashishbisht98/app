@@ -382,7 +382,7 @@ async def startup_event():
 
 
 # ---------- Mount ----------
-
+app.include_router(api_router)
 
 app.add_middleware(
     CORSMiddleware,
@@ -392,4 +392,4 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(api_router)
+
