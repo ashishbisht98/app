@@ -10,7 +10,7 @@
 Go to your Vercel project settings → Environment Variables and set:
 
 ```
-REACT_APP_BACKEND_URL=https://app-nine-lake-80.vercel.app/api
+REACT_APP_BACKEND_URL=https://app-nine-lake-80.vercel.app
 ```
 
 ### Step 2: Verify .env Files

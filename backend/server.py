@@ -245,6 +245,8 @@ async def root():
 async def health():
     fs_ok = True
     try:
+        if db is None:
+            raise RuntimeError("Firestore not initialized (mock mode)")
         await fs_run(lambda: db.collection('_health').document('ping').set({'t': datetime.now(timezone.utc).isoformat()}))
     except Exception as e:
         logger.error(f"Firestore health failed: {e}")
@@ -386,7 +388,7 @@ app.include_router(api_router)
 
 app.add_middleware(
     CORSMiddleware,
-  allow_origins=["*"],
+    allow_origins=[o.strip() for o in os.environ.get("CORS_ORIGINS", "*").split(",")] if os.environ.get("CORS_ORIGINS") else ["*"],
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],

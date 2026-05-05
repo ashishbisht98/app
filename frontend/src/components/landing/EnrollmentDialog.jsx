@@ -20,7 +20,9 @@ import { Loader2, ArrowRight, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 import axios from "axios";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const API_BASE = (process.env.REACT_APP_BACKEND_URL || "").replace(/\/+$/, "");
+// Allow either ".../api" or "..." as env var.
+const API = API_BASE.endsWith("/api") ? API_BASE : `${API_BASE}/api`;
 
 const EnrollmentContext = createContext(null);
 

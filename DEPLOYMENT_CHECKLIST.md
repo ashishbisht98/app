@@ -16,7 +16,7 @@
 1. **Set Vercel Environment Variable**
    - Go to Vercel Dashboard → Your Frontend Project
    - Settings → Environment Variables
-   - Add: `REACT_APP_BACKEND_URL` = `https://app-nine-lake-80.vercel.app/api`
+   - Add: `REACT_APP_BACKEND_URL` = `https://app-nine-lake-80.vercel.app`
    - Redeploy
 
 2. **Or just push to git** (if auto-deploy is enabled)
