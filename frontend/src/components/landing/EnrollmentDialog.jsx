@@ -74,22 +74,15 @@ export default function EnrollmentDialog() {
     }
     setLoading(true);
     try {
-      console.log(`[Razorpay] Posting to ${API}/enrollments`);
       const { data } = await axios.post(`${API}/enrollments`, {
         ...form,
         plan,
         schedule,
       });
 
-      console.log("[Razorpay] Response:", { 
-        test_mode: data.test_mode, 
-        order_id: data.order_id,
-        key_id: data.key_id?.substring(0, 15) + "***"
-      });
-
       // Test mode → just save lead, no checkout
       if (data.test_mode || !data.order_id) {
-        toast.success("✓ Test mode: Details saved. In production, Razorpay checkout would appear.");
+        toast.success("We've got your details! We'll reach out shortly to confirm payment & batch.");
         setSuccess(true);
         setLoading(false);
         return;
@@ -126,46 +119,21 @@ export default function EnrollmentDialog() {
             toast.success("Payment confirmed. Welcome to Orchitek!");
             setSuccess(true);
           } catch (err) {
-            console.error("[Razorpay] Verification error:", err.response?.data);
             toast.error("Payment received but verification failed. We'll reach out.");
           } finally {
             setLoading(false);
           }
         },
         modal: {
-          ondismiss: () => {
-            console.log("[Razorpay] Payment modal dismissed");
-            setLoading(false);
-          },
+          ondismiss: () => setLoading(false),
         },
       };
 
-      console.log("[Razorpay] Opening checkout with order:", options.order_id);
       const rz = new Razorpay(options);
       rz.open();
     } catch (err) {
-      const errorDetail = err?.response?.data?.detail || err?.message || "Unknown error";
-      const statusCode = err?.response?.status || "N/A";
-      
-      console.error("[Razorpay] Error:", {
-        status: statusCode,
-        detail: errorDetail,
-        url: `${API}/enrollments`,
-        fullError: err,
-      });
-
-      // Provide helpful error messages
-      if (statusCode === 502) {
-        toast.error(`Server error: ${errorDetail}`);
-      } else if (statusCode === 404) {
-        toast.error("API endpoint not found. Check backend URL.");
-      } else if (err?.code === "ECONNABORTED") {
-        toast.error("Request timeout. Backend might be down.");
-      } else if (err?.message?.includes("Network Error")) {
-        toast.error("Network error. Check your connection and backend URL.");
-      } else {
-        toast.error(errorDetail);
-      }
+      console.error(err);
+      toast.error(err?.response?.data?.detail || "Something went wrong. Try again.");
       setLoading(false);
     }
   };
