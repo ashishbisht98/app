@@ -16,7 +16,7 @@
 1. **Set Vercel Environment Variable**
    - Go to Vercel Dashboard → Your Frontend Project
    - Settings → Environment Variables
-   - Add: `REACT_APP_BACKEND_URL` = `https://app-nine-lake-80.vercel.app`
+   - Add: `REACT_APP_BACKEND_URL` = `https://orchitek.com`
    - Redeploy
 
 2. **Or just push to git** (if auto-deploy is enabled)
@@ -63,7 +63,7 @@ https://your-frontend-domain.vercel.app/
 ### Test Backend API
 ```bash
 # Check if backend is running
-curl https://app-nine-lake-80.vercel.app/api/health
+curl https://orchitek.com/api/health
 
 # Should return:
 {

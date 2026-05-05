@@ -2,7 +2,7 @@
 
 ## Current Setup
 - **Frontend**: Deployed on Vercel
-- **Backend**: Deployed on Vercel at `https://app-nine-lake-80.vercel.app/api`
+- **Backend**: FastAPI (`backend/server.py`) should be reachable at `/api/*`
 
 ## Frontend Configuration
 
@@ -10,7 +10,7 @@
 Go to your Vercel project settings → Environment Variables and set:
 
 ```
-REACT_APP_BACKEND_URL=https://app-nine-lake-80.vercel.app
+REACT_APP_BACKEND_URL=https://orchitek.com
 ```
 
 ### Step 2: Verify .env Files
@@ -27,9 +27,9 @@ vercel deploy --prod
 
 ## Backend Configuration
 
-### Step 1: Update Environment Variables in Vercel Backend Project Settings
+### Step 1: Update Environment Variables in Vercel Project Settings
 
-Go to your backend Vercel project → Settings → Environment Variables
+Go to your Vercel project → Settings → Environment Variables
 
 **Add these variables:**
 
@@ -86,7 +86,7 @@ Replace `your-frontend-domain` with your actual Vercel frontend domain.
 ## Troubleshooting Checklist
 
 - [ ] Frontend can reach backend (check browser console for CORS errors)
-- [ ] Backend is responding to health check: `https://app-nine-lake-80.vercel.app/api/health`
+- [ ] Backend is responding to health check: `https://orchitek.com/api/health`
 - [ ] Environment variables are set in both Vercel projects
 - [ ] Firebase credentials are either uploaded as JSON or mock database is in use
 - [ ] CORS_ORIGINS includes your frontend Vercel domain
