@@ -177,9 +177,7 @@ COURSE_FEE_STUDENT = 4999
 
 # ---------- App ----------
 app = FastAPI()
-# Vercel serves this app under "/api" (via `api/index.py`), so we keep
-# the internal router prefix empty to avoid "/api/api/*" routes.
-api_router = APIRouter(prefix="")
+api_router = APIRouter(prefix="/api")
 
 logging.basicConfig(
     level=logging.INFO,
