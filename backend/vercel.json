@@ -8,16 +8,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "server.py",
-      "headers": {
-        "Access-Control-Allow-Origin": "https://orchitek.com",
-        "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type,Authorization",
-        "Access-Control-Allow-Credentials": "true"
-      }
+      "dest": "server.py"
     }
-  ],
-  "env": {
-    "PYTHONUNBUFFERED": "1"
-  }
+  ]
 }
