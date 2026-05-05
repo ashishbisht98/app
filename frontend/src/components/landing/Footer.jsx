@@ -48,7 +48,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Orchitek · All rights reserved
           </div>
            <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-warm-400">
-            Build v1.0.0
+            Build v1.0.1
           </div>
           <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-warm-400">
             Built with focus, not fluff.
