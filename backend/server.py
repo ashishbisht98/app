@@ -1,5 +1,4 @@
 from fastapi import FastAPI, APIRouter, HTTPException
-from fastapi.responses import FileResponse
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 import os
@@ -407,36 +406,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-# ---------- Frontend Serving ----------
-@app.get("/{full_path:path}")
-async def serve_frontend_or_404(full_path: str):
-    """Serve frontend files or fallback to index.html for SPA routing."""
-    
-    # NEVER serve /api paths - let API router handle them
-    if full_path.startswith("api"):
-        raise HTTPException(status_code=404, detail="Not found")
-    
-    frontend_build = Path(__file__).parent.parent / "frontend" / "build"
-    
-    if not frontend_build.exists():
-        raise HTTPException(status_code=503, detail="Frontend not deployed")
-    
-    # Try to serve the exact file
-    file_path = frontend_build / full_path
-    if file_path.exists() and file_path.is_file():
-        return FileResponse(file_path)
-    
-    # Check if it's a static asset request (return 404, don't fallback)
-    if full_path.endswith(('.js', '.css', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.ico', '.woff', '.woff2', '.ttf', '.eot')):
-        raise HTTPException(status_code=404, detail="Asset not found")
-    
-    # For everything else, fallback to index.html (SPA routing)
-    index_path = frontend_build / "index.html"
-    if index_path.exists():
-        return FileResponse(index_path)
-    
-    raise HTTPException(status_code=404, detail="Not found")
 
 
 
