@@ -412,6 +412,11 @@ app.add_middleware(
 @app.get("/{full_path:path}")
 async def serve_frontend_or_404(full_path: str):
     """Serve frontend files or fallback to index.html for SPA routing."""
+    
+    # NEVER serve /api paths - let API router handle them
+    if full_path.startswith("api"):
+        raise HTTPException(status_code=404, detail="Not found")
+    
     frontend_build = Path(__file__).parent.parent / "frontend" / "build"
     
     if not frontend_build.exists():
