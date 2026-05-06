@@ -1,4 +1,5 @@
 from fastapi import FastAPI, APIRouter, HTTPException
+from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 import os
@@ -395,7 +396,7 @@ async def root():
     }
 
 
-# ---------- Mount ----------
+# ---------- Mount API Routes ----------
 app.include_router(api_router)
 
 app.add_middleware(
@@ -405,5 +406,13 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# ---------- Mount Frontend (Static Files) ----------
+frontend_build = Path(__file__).parent.parent / "frontend" / "build"
+if frontend_build.exists():
+    app.mount("/", StaticFiles(directory=str(frontend_build), html=True), name="frontend")
+    logger.info(f"✓ Frontend static files mounted from {frontend_build}")
+else:
+    logger.warning(f"⚠️  Frontend build directory not found at {frontend_build}. Root path will return API info only.")
 
 
