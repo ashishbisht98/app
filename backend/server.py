@@ -383,6 +383,18 @@ async def startup_event():
     logger.info(f"✓ App initialized - Razorpay mode: {RAZORPAY_MODE}")
 
 
+# ---------- Root Routes ----------
+@app.get("/")
+async def root():
+    """Root endpoint - API entry point."""
+    return {
+        "message": "Orchitek API",
+        "status": "active",
+        "docs": "/docs",
+        "health": "/api/health"
+    }
+
+
 # ---------- Mount ----------
 app.include_router(api_router)
 
