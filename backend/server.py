@@ -1,5 +1,5 @@
 from fastapi import FastAPI, APIRouter, HTTPException
-from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 import os
@@ -407,12 +407,26 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ---------- Mount Frontend (Static Files) ----------
-frontend_build = Path(__file__).parent.parent / "frontend" / "build"
-if frontend_build.exists():
-    app.mount("/", StaticFiles(directory=str(frontend_build), html=True), name="frontend")
-    logger.info(f"✓ Frontend static files mounted from {frontend_build}")
-else:
-    logger.warning(f"⚠️  Frontend build directory not found at {frontend_build}. Root path will return API info only.")
+
+# ---------- Frontend Fallback Route ----------
+@app.get("/{full_path:path}")
+async def serve_frontend(full_path: str):
+    """Serve frontend files and fallback to index.html for SPA routing."""
+    frontend_build = Path(__file__).parent.parent / "frontend" / "build"
+    
+    if not frontend_build.exists():
+        return {"error": "Frontend not deployed yet"}
+    
+    # Try to serve the exact file
+    file_path = frontend_build / full_path
+    if file_path.exists() and file_path.is_file():
+        return FileResponse(file_path)
+    
+    # Fallback to index.html for SPA routing
+    index_path = frontend_build / "index.html"
+    if index_path.exists():
+        return FileResponse(index_path)
+    
+    return {"error": "Not found"}
 
 
