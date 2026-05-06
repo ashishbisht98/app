@@ -408,25 +408,32 @@ app.add_middleware(
 )
 
 
-# ---------- Frontend Fallback Route ----------
+# ---------- Frontend Serving ----------
 @app.get("/{full_path:path}")
-async def serve_frontend(full_path: str):
-    """Serve frontend files and fallback to index.html for SPA routing."""
+async def serve_frontend_or_404(full_path: str):
+    """Serve frontend files or fallback to index.html for SPA routing."""
     frontend_build = Path(__file__).parent.parent / "frontend" / "build"
     
     if not frontend_build.exists():
-        return {"error": "Frontend not deployed yet"}
+        raise HTTPException(status_code=503, detail="Frontend not deployed")
     
     # Try to serve the exact file
     file_path = frontend_build / full_path
     if file_path.exists() and file_path.is_file():
         return FileResponse(file_path)
     
-    # Fallback to index.html for SPA routing
+    # Check if it's a static asset request (return 404, don't fallback)
+    if full_path.endswith(('.js', '.css', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.ico', '.woff', '.woff2', '.ttf', '.eot')):
+        raise HTTPException(status_code=404, detail="Asset not found")
+    
+    # For everything else, fallback to index.html (SPA routing)
     index_path = frontend_build / "index.html"
     if index_path.exists():
         return FileResponse(index_path)
     
-    return {"error": "Not found"}
+    raise HTTPException(status_code=404, detail="Not found")
+
+
+
 
 
